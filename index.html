@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto jockpot number</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-dark">
+    <div id="app">
+        <div class="documentContent">
+            <div class="heading">
+                <label for="" >Lottery Jockpot</label>
+            </div>
+
+            <div class="picked-numbers" >
+
+                <div data-aos="fade-left" v-for="jockpotnum in completenumbers" :key="jockpotnum" class="bg-light p-1 rounded shadow text-dark text-center">
+                    <strong>{{jockpotnum}}</strong>
+                </div>
+                
+            </div>
+
+            <div>
+                <button v-if="!(windowWidth >= 360 && windowWidth <= 640)" :disabled="btnIsDisabled" @click="generateNumber" class="btn btn-light btn-block shadow text-bold">
+                    <strong data-aos="fade-in">
+                        {{lottoButtonLabel()}}
+                    </strong>
+                </button>
+            </div>
+
+            <div class="list-jockpotnumber bg-light rounded p-3 shadow text-dark mx-3">
+                <label for=""><strong>List jocket lotto numbers.</strong></label> <br>
+
+                <div data-aos="zoom-in" v-for="(pickedjockpot, i) in pickedjockpotnums" :key="'asd'+i" class="picked-numbers mb-2">
+                    <div v-for="jockpotnum in pickedjockpot" :key="jockpotnum + 'aaa'" class="bg-light p-1 rounded shadow text-dark text-center" style="font-size:30px;">
+                        <strong>{{jockpotnum}}</strong>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="mobileBtn " @click="generateNumber" v-if="windowWidth > 300 && windowWidth < 640">
+            <button class="btn btn-dark btn-block text-light">
+                <strong  class="text-light">
+                    {{lottoButtonLabel()}}
+                </strong>
+            </button>
+        </div>
+
+        <div data-aos="fade-up" v-if="randoming" class=" bg-light text-dark text-center rounded shadow p-3 randoming" >
+            <strong data-aos="fade-in">
+                {{randomnumber}}
+            </strong>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="./js/main.js"></script>
+
+</html>
